@@ -1,0 +1,94 @@
+Resumen,Clave de incidencia,ID de la incidencia,Tipo de Incidencia,Estado,Clave del proyecto,Nombre del proyecto,Tipo de proyecto,Responsable del proyecto,ID del responsable del proyecto,Descripción del proyecto,Prioridad,Resolución,Persona asignada,ID de la persona asignada,Informador,ID del informador,Creador,ID del creador,Creada,Actualizada,Vista por Última Vez,Resuelta,Fecha de vencimiento,Votos,Descripción,Entorno,Interesados,ID de los interesados,Estimación original,Estimación Restante,Tiempo Trabajado,Relación de trabajo,Σ Estimación original,Σ Estimación Restante,Σ Tiempo empleado,Nivel de Seguridad,Adjunto,Campo personalizado (Actual end),Campo personalizado (Actual start),Campo personalizado (Change reason),Campo personalizado (Change risk),Campo personalizado (Change type),Campo personalizado (Epic Color),Campo personalizado (Epic Name),Campo personalizado (Epic Status),Campo personalizado (Formularios abiertos),Campo personalizado (Formularios bloqueados),Campo personalizado (Formularios enviados),Campo personalizado (Impact),Campo personalizado (Issue color),Campo personalizado (Objetivos),Campo personalizado (Project overview key),Campo personalizado (Project overview status),Campo personalizado (Rank),Campo personalizado (Request Type),Campo personalizado (Sentiment),Campo personalizado (Start date),Campo personalizado (Story Points),Campo personalizado (Story point estimate),Campo personalizado (Target end),Campo personalizado (Target start),Campo personalizado (Team),Campo personalizado (Total de formularios),Campo personalizado (Vulnerability),Campo personalizado ([CHART] Date of First Response),Campo personalizado ([CHART] Time in Status),Campo personalizado (development),Categoría de estado,Categoría de estado cambiada
+"Agregar productos existentes al kit con una ID de kit en la URL existente y en el cuerpo de la solicitud se borra ""quantity""",R1-8,10055,Error,Tareas por hacer,R1,Requisito 1: /api/v1/kits/:id/products,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,23/jul/24 4:35 PM,25/jul/24 5:13 PM,25/sep/24 5:31 AM,,,0,"Pasos: 
+
+
+# Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit en la URL existente y en el cuerpo de la solicitud se borra ""quantity"":
+Parámetros de ruta: id=2
+{
+    ""productsList"": [
+        {
+            ""id"": ""1""
+        },
+        {
+            ""id"": ""6""
+        }
+    ]
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 500 Internal Server Error",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,23/jul/24 4:35 PM;610be946fc68c10069fd1efe;6.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10056,,,,,,,,,,,,,,,,,0|i000bb:,,,,,,,,,,,,,,Por hacer,23/jul/24 4:35 PM
+Agregar productos existentes al kit con una ID de kit en la URL existente y una ID en formato string en el cuerpo de la solicitud,R1-7,10054,Error,Tareas por hacer,R1,Requisito 1: /api/v1/kits/:id/products,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,23/jul/24 4:29 PM,25/jul/24 5:11 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+# Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit en la URL existente y una ID en formato string en el cuerpo de la solicitud:
+Parámetros de ruta: id=2
+{
+    ""productsList"": [
+        {
+            ""id"": ""1"",
+            ""quantity"": 2
+        },
+        {
+            ""id"": ""6"",
+            ""quantity"": 2
+        }
+    ]
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 200 OK",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,23/jul/24 4:29 PM;610be946fc68c10069fd1efe;5.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10055,,,,,,,,,,,,,,,,,0|i000b3:,,,,,,,,,,,,,,Por hacer,23/jul/24 4:29 PM
+Agregar productos existentes al kit con una ID de kit en la URL existente y sin cuerpo en la solicitud,R1-6,10053,Error,Tareas por hacer,R1,Requisito 1: /api/v1/kits/:id/products,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,23/jul/24 4:22 PM,25/jul/24 5:09 PM,25/sep/24 5:31 AM,,,0,"Pasos: 
+
+
+# Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit en la URL existente y sin cuerpo en la solicitud:
+Parámetros de ruta: id=2
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 200 OK",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,23/jul/24 4:22 PM;610be946fc68c10069fd1efe;4.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10054,,,,,,,,,,,,,,,,,0|i000av:,,,,,,,,,,,,,,Por hacer,23/jul/24 4:22 PM
+Agregar productos existentes al kit con una ID de kit en la URL existente y una lista de productos vacía en la solicitud,R1-4,10051,Error,Tareas por hacer,R1,Requisito 1: /api/v1/kits/:id/products,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,20/jul/24 4:19 PM,25/jul/24 5:07 PM,25/sep/24 5:31 AM,,,0,"Pasos: 
+
+# Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit en la URL existente y una lista de productos vacía en la solicitud:
+Parámetros de ruta: id=2
+{
+    ""productsList"": []
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 200 OK ",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,20/jul/24 4:18 PM;610be946fc68c10069fd1efe;3.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10053,,,,,,,,,,,,,,,,,0|i000af:,,,,,,,,,,,,,,Por hacer,20/jul/24 4:19 PM
+Agregar productos existentes al kit con una ID de kit escrita en letras en la URL existente y una ID existente en el cuerpo de la solicitud,R1-3,10050,Error,Tareas por hacer,R1,Requisito 1: /api/v1/kits/:id/products,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,20/jul/24 4:07 PM,25/jul/24 5:06 PM,25/sep/24 5:31 AM,,,0,"Pasos: 
+
+# Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit escrita en letras en la URL y una ID existente de producto en el cuerpo de la solicitud:
+Parámetros de ruta: id=dos
+{
+    ""productsList"": [
+        {
+            ""id"": 1,
+            ""quantity"": 2
+        },
+        {
+            ""id"": 6,
+            ""quantity"": 2
+        }
+    ]
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 500 Internal Server Error",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,20/jul/24 4:07 PM;610be946fc68c10069fd1efe;2.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10052,,,,,,,,,,,,,,,,,0|i000a7:,,,,,,,,,,,,,,Por hacer,20/jul/24 4:07 PM
+Agregar productos existentes al kit con una ID de kit en la URL existente y una ID inexistente en el cuerpo de la solicitud,R1-1,10048,Error,Tareas por hacer,R1,Requisito 1: /api/v1/kits/:id/products,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,20/jul/24 3:58 PM,25/jul/24 5:04 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+# Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit existente en la URL y una ID inexistente de producto en el cuerpo de la solicitud: 
+Parámetros de ruta: id=4 
+{ 
+     ""productsList"": [ 
+      { 
+            ""id"": 10000, 
+            ""quantity"": 2 
+      }, 
+      { 
+            ""id"": 6, 
+            ""quantity"": 2
+      } 
+  ] 
+}
+
+Resultado esperado: 400 Bad Request 
+Resultado actual: 200 OK",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,20/jul/24 3:58 PM;610be946fc68c10069fd1efe;1.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10051,,,,,,,,,,,,,,,,,0|i0009r:,,,,,,,,,,,,,,Por hacer,20/jul/24 3:58 PM

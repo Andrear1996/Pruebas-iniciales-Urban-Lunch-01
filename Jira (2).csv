@@ -1,0 +1,536 @@
+Resumen,Clave de incidencia,ID de la incidencia,Tipo de Incidencia,Estado,Clave del proyecto,Nombre del proyecto,Tipo de proyecto,Responsable del proyecto,ID del responsable del proyecto,Descripción del proyecto,Prioridad,Resolución,Persona asignada,ID de la persona asignada,Informador,ID del informador,Creador,ID del creador,Creada,Actualizada,Vista por Última Vez,Resuelta,Fecha de vencimiento,Votos,Descripción,Entorno,Interesados,ID de los interesados,Estimación original,Estimación Restante,Tiempo Trabajado,Relación de trabajo,Σ Estimación original,Σ Estimación Restante,Σ Tiempo empleado,Nivel de Seguridad,Adjunto,Campo personalizado (Actual end),Campo personalizado (Actual start),Campo personalizado (Change reason),Campo personalizado (Change risk),Campo personalizado (Change type),Campo personalizado (Epic Color),Campo personalizado (Epic Name),Campo personalizado (Epic Status),Campo personalizado (Formularios abiertos),Campo personalizado (Formularios bloqueados),Campo personalizado (Formularios enviados),Campo personalizado (Impact),Campo personalizado (Issue color),Campo personalizado (Objetivos),Campo personalizado (Project overview key),Campo personalizado (Project overview status),Campo personalizado (Rank),Campo personalizado (Request Type),Campo personalizado (Sentiment),Campo personalizado (Start date),Campo personalizado (Story Points),Campo personalizado (Story point estimate),Campo personalizado (Target end),Campo personalizado (Target start),Campo personalizado (Team),Campo personalizado (Total de formularios),Campo personalizado (Vulnerability),Campo personalizado ([CHART] Date of First Response),Campo personalizado ([CHART] Time in Status),Campo personalizado (development),Categoría de estado,Categoría de estado cambiada
+Comprobar el servicio de entrega Order and Go agregando  los valores de los parámetros como strings,R2-46,10101,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 6:32 PM,25/jul/24 5:57 PM,25/sep/24 5:31 AM,,,0,"Pasos: 
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos como strings: ""deliveryTime"": ""21"", ""productsCount"": ""10"", ""productsWeight"": ""4"" en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": ""21"",
+    ""productsCount"": ""10"",
+    ""productsWeight"": ""4""
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual:
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}
+",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 6:32 PM;610be946fc68c10069fd1efe;24.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10080,,,,,,,,,,,,,,,,,0|i000lj:,,,,,,,,,,,,,,Por hacer,24/jul/24 6:32 PM
+"Comprobar el servicio de entrega Order and Go agregando  ""productsCount"": 16 y ""productsWeight"": 6",R2-45,10100,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 6:23 PM,25/jul/24 5:55 PM,25/sep/24 5:31 AM,,,0,"Pasos: 
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 16, ""productsWeight"": 7 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 21,
+    ""productsCount"": 16,
+    ""productsWeight"": 7
+}
+
+Resultado esperado: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 9
+}
+
+Resultado actual: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 6:23 PM;610be946fc68c10069fd1efe;23.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10079,,,,,,,,,,,,,,,,,0|i000lb:,,,,,,,,,,,,,,Por hacer,24/jul/24 6:23 PM
+"Comprobar el servicio de entrega Order and Go agregando  ""productsWeight"": 7",R2-42,10097,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 6:16 PM,25/jul/24 5:53 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 14, ""productsWeight"": 7 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 21,
+    ""productsCount"": 14,
+    ""productsWeight"": 7
+}
+
+Resultado esperado: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 9
+}
+
+Resultado actual: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 6:16 PM;610be946fc68c10069fd1efe;22.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10078,,,,,,,,,,,,,,,,,0|i000kn:,,,,,,,,,,,,,,Por hacer,24/jul/24 6:16 PM
+"Comprobar el servicio de entrega Order and Go agregando  ""productsWeight"": 3",R2-41,10096,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 6:12 PM,25/jul/24 5:51 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 14, ""productsWeight"": 3 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 21,
+    ""productsCount"": 14,
+    ""productsWeight"": 3
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual:
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 6:12 PM;610be946fc68c10069fd1efe;21.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10077,,,,,,,,,,,,,,,,,0|i000kf:,,,,,,,,,,,,,,Por hacer,24/jul/24 6:12 PM
+"Comprobar el servicio de entrega Order and Go agregando  ""productsCount"": 16",R2-36,10091,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 5:56 PM,25/jul/24 5:49 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 16, ""productsWeight"": 5 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 21,
+    ""productsCount"": 16,
+    ""productsWeight"": 5
+}
+
+Resultado esperado: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 9
+}
+
+Resultado actual:
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 5:55 PM;610be946fc68c10069fd1efe;20.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10076,,,,,,,,,,,,,,,,,0|i000jb:,,,,,,,,,,,,,,Por hacer,24/jul/24 5:56 PM
+"Comprobar el servicio de entrega Order and Go agregando  ""productsCount"": 8",R2-35,10090,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 5:49 PM,25/jul/24 5:47 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 8, ""productsWeight"": 5 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 21,
+    ""productsCount"": 8,
+    ""productsWeight"": 5
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 5:49 PM;610be946fc68c10069fd1efe;19.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10075,,,,,,,,,,,,,,,,,0|i000j3:,,,,,,,,,,,,,,Por hacer,24/jul/24 5:49 PM
+"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"": 23 de acuerdo con lo establecido en los requisitos para los artículos de pedido de 9 - 15 y el peso de 3.1 -6 kg",R2-30,10085,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 5:24 PM,25/jul/24 5:43 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 23, ""productsCount"": 8, ""productsWeight"": 5 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 23,
+    ""productsCount"": 10,
+    ""productsWeight"": 5
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 5:31 PM;610be946fc68c10069fd1efe;17.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10073,,,,,,,,,,,,,,,,,0|i000hz:,,,,,,,,,,,,,,Por hacer,24/jul/24 5:24 PM
+"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"": 7 de acuerdo con lo establecido en los requisitos para los artículos de pedido de 9 - 15 y el peso de 3.1 -6 kg",R2-29,10084,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 5:07 PM,25/jul/24 5:41 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 7, ""productsCount"": 8, ""productsWeight"": 5 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 7,
+    ""productsCount"": 10,
+    ""productsWeight"": 5
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual:
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 5:32 PM;610be946fc68c10069fd1efe;18.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10074,,,,,,,,,,,,,,,,,0|i000hr:,,,,,,,,,,,,,,Por hacer,24/jul/24 5:07 PM
+Comprobar el servicio de entrega Order and Go con el cuerpo de la solicitud vacío,R2-26,10081,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 4:56 PM,25/jul/24 5:37 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y con el cuerpo de la solicitud vacío:
+{}
+
+Resultado esperado: 400 Bad Request
+Resultado actual:
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 4:56 PM;610be946fc68c10069fd1efe;14.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10069,,,,,,,,,,,,,,,,,0|i000h3:,,,,,,,,,,,,,,Por hacer,24/jul/24 4:56 PM
+"Comprobar el servicio de entrega Order and Go sin los párametros ""deliveryTime"" y ""productsWeight""",R2-25,10080,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 4:51 PM,25/jul/24 5:35 PM,25/sep/24 5:31 AM,,,0,"Pasos: 
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina los parámetos ""deliveryTime"" y ""productsWeight"":
+{
+    ""productsCount"": 7
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 4:51 PM;610be946fc68c10069fd1efe;13.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10068,,,,,,,,,,,,,,,,,0|i000gv:,,,,,,,,,,,,,,Por hacer,24/jul/24 4:51 PM
+"Comprobar el servicio de entrega Order and Go sin los párametros ""productsCount"" y ""productsWeight""",R2-24,10079,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 4:43 PM,25/jul/24 5:33 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina los parámetos ""productsCount"" y ""productsWeight"":
+{
+    ""deliveryTime"": 21
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 4:43 PM;610be946fc68c10069fd1efe;12.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10067,,,,,,,,,,,,,,,,,0|i000gn:,,,,,,,,,,,,,,Por hacer,24/jul/24 4:43 PM
+"Comprobar el servicio de entrega Order and Go sin los párametros  ""deliveryTime"" y ""productsCount""",R2-23,10078,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 4:38 PM,25/jul/24 5:32 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina los parámetos ""deliveryTime"" y ""productsCount"":
+{
+    ""productsWeight"": 2
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 4:38 PM;610be946fc68c10069fd1efe;11.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10066,,,,,,,,,,,,,,,,,0|i000gf:,,,,,,,,,,,,,,Por hacer,24/jul/24 4:38 PM
+"Comprobar el servicio de entrega Order and Go sin el párametro ""productsWeight""",R2-22,10077,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 4:32 PM,25/jul/24 5:31 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina el parámeto ""productsWeight"":
+{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual:
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 4:32 PM;610be946fc68c10069fd1efe;10.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10065,,,,,,,,,,,,,,,,,0|i000g7:,,,,,,,,,,,,,,Por hacer,24/jul/24 4:32 PM
+"Comprobar el servicio de entrega Order and Go sin el párametro ""productsCount""",R2-21,10076,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 4:27 PM,25/jul/24 5:28 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina el parámeto ""productsCount"":
+{
+    ""deliveryTime"": 21,
+    ""productsWeight"": 2
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual:
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 4:27 PM;610be946fc68c10069fd1efe;9.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10064,,,,,,,,,,,,,,,,,0|i000fz:,,,,,,,,,,,,,,Por hacer,24/jul/24 4:27 PM
+"Comprobar el servicio de entrega Order and Go sin el párametro ""deliveryTime""",R2-20,10075,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 4:06 PM,25/jul/24 5:26 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina el parámeto ""deliveryTime"":
+{
+    ""productsCount"": 7,
+    ""productsWeight"": 2
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 4:06 PM;610be946fc68c10069fd1efe;8.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10063,,,,,,,,,,,,,,,,,0|i000fr:,,,,,,,,,,,,,,Por hacer,24/jul/24 4:06 PM
+"Comprobar el servicio de entrega Order and Go agregando ""productsWeight"": 4",R2-17,10072,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 5:34 AM,25/jul/24 5:25 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 7, ""productsWeight"": 4 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7,
+    ""productsWeight"": 4
+}
+
+Resultado esperado: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 9
+}
+
+Resultado actual:
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 5:34 AM;610be946fc68c10069fd1efe;6.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10062,,,,,,,,,,,,,,,,,0|i000f3:,,,,,,,,,,,,,,Por hacer,24/jul/24 5:34 AM
+"Comprobar el servicio de entrega Order and Go agregando ""productsWeight"": -1",R2-16,10071,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 5:29 AM,25/jul/24 5:23 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 7, ""productsWeight"": -1 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7,
+    ""productsWeight"": -1
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 5:29 AM;610be946fc68c10069fd1efe;5.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10061,,,,,,,,,,,,,,,,,0|i000ev:,,,,,,,,,,,,,,Por hacer,24/jul/24 5:29 AM
+"Comprobar el servicio de entrega Order and Go agregando ""productsCount"": 9",R2-11,10066,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 5:19 AM,25/jul/24 5:22 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 9, ""productsWeight"": 2 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 21,
+    ""productsCount"": 9,
+    ""productsWeight"": 2
+}
+
+Resultado esperado: 
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 9
+}
+
+Resultado actual:
+200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 5:19 AM;610be946fc68c10069fd1efe;4.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10060,,,,,,,,,,,,,,,,,0|i000dr:,,,,,,,,,,,,,,Por hacer,24/jul/24 5:19 AM
+"Comprobar el servicio de entrega Order and Go agregando ""productsCount"": -1",R2-10,10065,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 5:15 AM,25/jul/24 5:20 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": -1, ""productsWeight"": 2 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 21,
+    ""productsCount"": -1,
+    ""productsWeight"": 2
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 5:15 AM;610be946fc68c10069fd1efe;3.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10059,,,,,,,,,,,,,,,,,0|i000dj:,,,,,,,,,,,,,,Por hacer,24/jul/24 5:15 AM
+"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"":23",R2-5,10060,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 5:05 AM,25/jul/24 5:17 PM,25/sep/24 5:31 AM,,,0,"Pasos:
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 23, ""productsCount"": 5, ""productsWeight"": 2 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 23,
+    ""productsCount"": 5,
+    ""productsWeight"": 2
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 200 OK
+{
+
+    ""name"": ""Order and Go"",
+
+    ""isItPossibleToDeliver"": true,
+
+    ""hostDeliveryCost"": 3,
+
+    ""toBeDeliveredTime"": {
+
+        ""min"": 20,
+
+        ""max"": 25
+
+    },
+
+    ""clientDeliveryCost"": 5
+
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 5:05 AM;610be946fc68c10069fd1efe;2.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10058,,,,,,,,,,,,,,,,,0|i000cf:,,,,,,,,,,,,,,Por hacer,24/jul/24 5:05 AM
+"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"":7 ",R2-4,10059,Error,Tareas por hacer,R2,Requisito 2: /order-and-go/v1/delivery,software,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,High,,,,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,24/jul/24 5:01 AM,25/jul/24 5:16 PM,25/sep/24 5:31 AM,,,0,"Pasos: 
+
+
+# Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 7, ""productsCount"": 5, ""productsWeight"": 2 en el cuerpo de la solicitud:
+{
+    ""deliveryTime"": 7,
+    ""productsCount"": 5,
+    ""productsWeight"": 2
+}
+
+Resultado esperado: 400 Bad Request
+Resultado actual: 200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",,Andrea del Pilar Rojas Riaño,610be946fc68c10069fd1efe,,,,,,,,,24/jul/24 5:01 AM;610be946fc68c10069fd1efe;1.png;https://andrea-del-pilar19.atlassian.net/rest/api/3/attachment/content/10057,,,,,,,,,,,,,,,,,0|i000c7:,,,,,,,,,,,,,,Por hacer,24/jul/24 5:01 AM

@@ -1,0 +1,1081 @@
+ID,Título del caso de prueba,Pasos de la prueba,Datos de prueba (Cuerpo de la solicitud),Resultado esperado,Resultado actual,Estado,Enlace al informe de errores
+Requisito 1: /api/v1/kits/:id/products,,,,,,,
+R1,Agregar productos existentes al kit,1. Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit en la URL y una ID existente de producto en el cuerpo de la solicitud. ,"Parámetros de ruta: id=2 
+{
+ ""productsList"": [
+ {
+ ""id"": 1,
+ ""quantity"":
+ 2
+ }
+ ]
+ }",200 OK ,200 OK ,APROBADO,
+R1-0,Agregar productos existentes al kit con una ID de kit en la URL inexistente,1. Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit inexistente en la URL y una ID existente de producto en el cuerpo de la solicitud. ,"Parámetros de ruta: id=10000
+{
+    ""productsList"": [
+        {
+            ""id"": 1,
+            ""quantity"": 2
+        },
+        {
+            ""id"": 6,
+            ""quantity"": 2
+        }
+    ]
+}","404Not Found","404Not Found",APROBADO,
+R1-1,Agregar productos existentes al kit con una ID de kit en la URL existente y una ID inexistente en el cuerpo de la solicitud,1. Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit existente en la URL y una ID inexistente de producto en el cuerpo de la solicitud. ,"Parámetros de ruta: id=4
+{
+    ""productsList"": [
+        {
+            ""id"": 10000,
+            ""quantity"": 2
+        },
+        {
+            ""id"": 6,
+            ""quantity"": 2
+        }
+    ]
+}",400 Bad Request,200 OK ,NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R1-1?atlOrigin=eyJpIjoiMDlhMzcxMmIwOTYyNGZjYjk5ZDY3YzIzZGRjYWFjNDgiLCJwIjoiaiJ9
+R1-2,Agregar productos existentes al kit con sin ID de kit en la URL y una ID existente en el cuerpo de la solicitud,1. Envía una solicitud POST a /api/v1/kits/:id/products sin ID de kit en la URL y una ID existente de producto en el cuerpo de la solicitud. ,"Parámetros de ruta: id=
+{
+    ""productsList"": [
+        {
+            ""id"": 1,
+            ""quantity"": 2
+        },
+        {
+            ""id"": 6,
+            ""quantity"": 2
+        }
+    ]
+}","404Not Found","404Not Found",APROBADO,
+R1-3,Agregar productos existentes al kit con una ID de kit escrita en letras en la URL existente y una ID existente en el cuerpo de la solicitud,1. Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit escrita en letras en la URL y una ID existente de producto en el cuerpo de la solicitud. ,"Parámetros de ruta: id=dos
+{
+    ""productsList"": [
+        {
+            ""id"": 1,
+            ""quantity"": 2
+        },
+        {
+            ""id"": 6,
+            ""quantity"": 2
+        }
+    ]
+}",400 Bad Request,500 Internal Server Error,NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R1-3?atlOrigin=eyJpIjoiMWVmNzg1OWU2ZTRiNDE0NzliNjYyMzUyY2I0NWM2NGYiLCJwIjoiaiJ9
+R1-4,Agregar productos existentes al kit con una ID de kit en la URL existente y una lista de productos vacía en la solicitud,1. Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit en la URL existente y una lista de productos vacía en la solicitud,"Parámetros de ruta: id=2 
+{
+    ""productsList"": []
+}",400 Bad Request,200 OK ,NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R1-4?atlOrigin=eyJpIjoiODY5OWI3ZDg4NjViNGRlZjk0NTg2MTM4MWU3NjNmNzMiLCJwIjoiaiJ9
+R1-5,Agregar productos existentes al kit con una ID de kit en la URL existente y un cuerpo vacío en la solicitud,1. Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit en la URL existente y un cuerpo vacío en la solicitud,"Parámetros de ruta: id=2 
+{
+  
+}","404Not Found","404Not Found",APROBADO,
+R1-6,Agregar productos existentes al kit con una ID de kit en la URL existente y sin cuerpo en la solicitud,1. Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit en la URL existente y sin cuerpo en la solicitud,"Parámetros de ruta: id=2 
+",400 Bad Request,200 OK ,NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R1-6?atlOrigin=eyJpIjoiZTA5MWM5NGI2ZjQ3NGQyM2IzMzI5NzRkNjBmYWU3MmYiLCJwIjoiaiJ9
+R1-7,Agregar productos existentes al kit con una ID de kit en la URL existente y una ID en formato string en el cuerpo de la solicitud,1. Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit en la URL existente y una ID en formato string en el cuerpo de la solicitud,"Parámetros de ruta: id=2 
+{
+    ""productsList"": [
+        {
+            ""id"": ""1"",
+            ""quantity"": 2
+        },
+        {
+            ""id"": ""6"",
+            ""quantity"": 2
+        }
+    ]
+}",400 Bad Request,200 OK ,NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R1-7?atlOrigin=eyJpIjoiMjRkNzU0OTkwYmIzNDEzYWIxOTc4ZjNkOTAwY2FmNWMiLCJwIjoiaiJ9
+R1-8,"Agregar productos existentes al kit con una ID de kit en la URL existente y en el cuerpo de la solicitud se borra ""quantity""","1. Envía una solicitud POST a /api/v1/kits/:id/products con una ID de kit en la URL existente y en el cuerpo de la solicitud se borra ""quantity""","Parámetros de ruta: id=2 
+{
+    ""productsList"": [
+        {
+            ""id"": ""1""
+        },
+        {
+            ""id"": ""6""
+        }
+    ]
+}",400 Bad Request,500 Internal Server Error,NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R1-8?atlOrigin=eyJpIjoiMTA3YTFhZjJiYTM5NDUyZWE2MDQ4YTAzZTM4ZTUzZjgiLCJwIjoiaiJ9
+Requisito 2: /order-and-go/v1/delivery,,,,,,,
+R2-1,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"": 20, ""productsCount"": 5, ""productsWeight"": 2 en el cuerpo de la solicitud","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 20, ""productsCount"": 5, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 20,
+    ""productsCount"": 5,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-2,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"":8 (límite inferior)","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 08, ""productsCount"": 5, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 8,
+    ""productsCount"": 5,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-3,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"":22 (límite superior)","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 22, ""productsCount"": 5, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 22,
+    ""productsCount"": 5,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-4,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"":7 ","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 7, ""productsCount"": 5, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 7,
+    ""productsCount"": 5,
+    ""productsWeight"": 2
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-4?atlOrigin=eyJpIjoiN2FhMjU5NTkwYjY3NGY0MDk2YzIzYzg2OGZkMDY5MDUiLCJwIjoiaiJ9
+R2-5,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"":23","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 23, ""productsCount"": 5, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 23,
+    ""productsCount"": 5,
+    ""productsWeight"": 2
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-5?atlOrigin=eyJpIjoiNWE2N2ViNzY1MWJiNGZiNjg4NjJhZWMwOTEyMjM0ZjkiLCJwIjoiaiJ9
+R2-6,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"":9","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 9, ""productsCount"": 5, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 9,
+    ""productsCount"": 5,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-7,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"": 21","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 5, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 5,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-8,"Comprobar el servicio de entrega Order and Go agregando ""productsCount"": 0 (límite inferior)","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 0, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 0,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-9,"Comprobar el servicio de entrega Order and Go agregando ""productsCount"": 8 (límite superior)","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 8, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 8,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-10,"Comprobar el servicio de entrega Order and Go agregando ""productsCount"": -1","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": -1, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": -1,
+    ""productsWeight"": 2
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-10?atlOrigin=eyJpIjoiZGJiZjU0YzczODc3NDViOThjZjRlZDJhMTBmMGJiNzYiLCJwIjoiaiJ9
+R2-11,"Comprobar el servicio de entrega Order and Go agregando ""productsCount"": 9","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 9, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 9,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 9
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-11?atlOrigin=eyJpIjoiMWY0ZjZkZjlhOTY4NGFhMmFiZTJlYzc4YzEyMWMzNDciLCJwIjoiaiJ9
+R2-12,"Comprobar el servicio de entrega Order and Go agregando ""productsCount"": 1","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 1, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 1,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-13,"Comprobar el servicio de entrega Order and Go agregando ""productsCount"": 7","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 7, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-14,"Comprobar el servicio de entrega Order and Go agregando ""productsWeight"": 0 (límite inferior) ","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 7, ""productsWeight"": 0 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7,
+    ""productsWeight"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-15,"Comprobar el servicio de entrega Order and Go agregando ""productsWeight"": 3 (límite superior) ","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 7, ""productsWeight"": 3 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7,
+    ""productsWeight"": 3
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-16,"Comprobar el servicio de entrega Order and Go agregando ""productsWeight"": -1","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 7, ""productsWeight"": -1 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7,
+    ""productsWeight"": -1
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-16?atlOrigin=eyJpIjoiMzI3ZjViZDc0YTcyNGIzMDk4ZDc1MzhiODgzNjc4NjMiLCJwIjoiaiJ9
+R2-17,"Comprobar el servicio de entrega Order and Go agregando ""productsWeight"": 4","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 7, ""productsWeight"": 4 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7,
+    ""productsWeight"": 4
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 9
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-17?atlOrigin=eyJpIjoiZDhmY2FhZDc0MjU4NGUyMmI5ZWU0YWVhODUwZGVkNjAiLCJwIjoiaiJ9
+R2-18,"Comprobar el servicio de entrega Order and Go agregando ""productsWeight"": 1","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 7, ""productsWeight"": 1 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7,
+    ""productsWeight"": 1
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-19,"Comprobar el servicio de entrega Order and Go agregando ""productsWeight"": 2","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 7, ""productsWeight"": 2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7,
+    ""productsWeight"": 2
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-20,"Comprobar el servicio de entrega Order and Go sin el párametro ""deliveryTime""","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina el parámeto ""deliveryTime""","{
+    ""productsCount"": 7,
+    ""productsWeight"": 2
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-20?atlOrigin=eyJpIjoiYmUwYTMyODk3ZWZiNGRkNmEzNGJhM2Q2ODZjMzAwNmIiLCJwIjoiaiJ9
+R2-21,"Comprobar el servicio de entrega Order and Go sin el párametro ""productsCount""","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina el parámeto ""productsCount""","{
+    ""deliveryTime"": 21,
+    ""productsWeight"": 2
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-21?atlOrigin=eyJpIjoiZjg2YzRlY2FjNzFjNGRmZGE5ZDgzNWY2MjJkOWNlYTQiLCJwIjoiaiJ9
+R2-22,"Comprobar el servicio de entrega Order and Go sin el párametro ""productsWeight""","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina el parámeto ""productsWeight""","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 7
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-22?atlOrigin=eyJpIjoiY2Y5ODgyNjJlZmU5NDlkMGE4NmYxOTI3MWViNTdhNzQiLCJwIjoiaiJ9
+R2-23,"Comprobar el servicio de entrega Order and Go sin los párametros  ""deliveryTime"" y ""productsCount""","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina los parámetos ""deliveryTime"" y ""productsCount""","{
+    ""productsWeight"": 2
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-23?atlOrigin=eyJpIjoiYzU4ZWQ1MDZiYTAyNDI4ZTg4MzI5MGM3YzJiODVlOWYiLCJwIjoiaiJ9
+R2-24,"Comprobar el servicio de entrega Order and Go sin los párametros ""productsCount"" y ""productsWeight""","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina los parámetos ""productsCount"" y ""productsWeight""","{
+    ""deliveryTime"": 21
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-24?atlOrigin=eyJpIjoiNDljZWNjMTZjOGQ2NDZiOWIxZmJhZmZlMWUxMTRlZWUiLCJwIjoiaiJ9
+R2-25,"Comprobar el servicio de entrega Order and Go sin los párametros ""deliveryTime"" y ""productsWeight""","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se elimina los parámetos ""deliveryTime"" y ""productsWeight""","{
+    ""productsCount"": 7
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-25?atlOrigin=eyJpIjoiYjc4ZmVkMjgyZDQ1NDZmMGI2ZjI2ZTM1ZGI3YzJhMTciLCJwIjoiaiJ9
+R2-26,Comprobar el servicio de entrega Order and Go con el cuerpo de la solicitud vacío,1. Envía una solicitud POST a order-and-go/v1/delivery y con el cuerpo de la solicitud vacío ,{},400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-26?atlOrigin=eyJpIjoiYTY1YWMwZGRlMTI0NDU2ZTk4OGM4NTgwMmY0NTUyOWMiLCJwIjoiaiJ9
+R2-27,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"": 8 (Límite inferior)","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 8, ""productsCount"": 8, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 8,
+    ""productsCount"": 10,
+    ""productsWeight"": 5
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-28,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"": 22 (Límite superior)","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 22, ""productsCount"": 8, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 22,
+    ""productsCount"": 10,
+    ""productsWeight"": 5
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-29,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"": 7 de acuerdo con lo establecido en los requisitos para los artículos de pedido de 9 - 15 y el peso de 3.1 -6 kg","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 7, ""productsCount"": 8, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 7,
+    ""productsCount"": 10,
+    ""productsWeight"": 5
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-29?atlOrigin=eyJpIjoiMGRhY2JkNWMzMzFlNDU0ZGFkYzRjMjUyMDgzZDJkOTgiLCJwIjoiaiJ9
+R2-30,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"": 23 de acuerdo con lo establecido en los requisitos para los artículos de pedido de 9 - 15 y el peso de 3.1 -6 kg","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 23, ""productsCount"": 8, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 23,
+    ""productsCount"": 10,
+    ""productsWeight"": 5
+}",400 Bad Request,"200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-30?atlOrigin=eyJpIjoiYTg5MzBlYWZjZWJiNDI5OWI4NTU0ZmM0YmM1YzEwZjgiLCJwIjoiaiJ9
+R2-31,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"": 9","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 9, ""productsCount"": 8, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 9,
+    ""productsCount"": 10,
+    ""productsWeight"": 5
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-32,"Comprobar el servicio de entrega Order and Go agregando  ""deliveryTime"": 21","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 8, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 10,
+    ""productsWeight"": 5
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-33,"Comprobar el servicio de entrega Order and Go agregando  ""productsCount"": 9","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 9, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 9,
+    ""productsWeight"": 5
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-34,"Comprobar el servicio de entrega Order and Go agregando  ""productsCount"": 15","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 15, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 15,
+    ""productsWeight"": 5
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-35,"Comprobar el servicio de entrega Order and Go agregando  ""productsCount"": 8","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 8, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 8,
+    ""productsWeight"": 5
+}",400 Bad Request,"200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-35?atlOrigin=eyJpIjoiNTE3NzA2Yjk0ODc1NDRmNDg1NTA0ZDRlYWZkMmMwN2QiLCJwIjoiaiJ9
+R2-36,"Comprobar el servicio de entrega Order and Go agregando  ""productsCount"": 16","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 16, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 16,
+    ""productsWeight"": 5
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 3,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 9
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-36?atlOrigin=eyJpIjoiYTMzMjI5OTlhMWM2NDU1NTk2ZWIyYTgzZDYxNjBkMTIiLCJwIjoiaiJ9
+R2-37,"Comprobar el servicio de entrega Order and Go agregando  ""productsCount"": 10","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 10, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 10,
+    ""productsWeight"": 5
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-38,"Comprobar el servicio de entrega Order and Go agregando  ""productsCount"": 14","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 14, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 14,
+    ""productsWeight"": 5
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-39,"Comprobar el servicio de entrega Order and Go agregando  ""productsWeight"": 3.1 (Límite inferior)","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 14, ""productsWeight"": 3.1 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 14,
+    ""productsWeight"": 3.1
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-40,"Comprobar el servicio de entrega Order and Go agregando  ""productsWeight"": 6 (Límite superior)","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 14, ""productsWeight"": 6 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 14,
+    ""productsWeight"": 6
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-41,"Comprobar el servicio de entrega Order and Go agregando  ""productsWeight"": 3","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 14, ""productsWeight"": 3 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 14,
+    ""productsWeight"": 3
+}",400 Bad Request,"200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-41?atlOrigin=eyJpIjoiMGIwYzk1YzI3MWUxNGI3YWE4OGY4ZGFlMGRmMjdlOGYiLCJwIjoiaiJ9
+R2-42,"Comprobar el servicio de entrega Order and Go agregando  ""productsWeight"": 7","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 14, ""productsWeight"": 7 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 14,
+    ""productsWeight"": 7
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 9
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-42?atlOrigin=eyJpIjoiZWE5YTBiODdiZGI2NDA0ZDhhMmFhOTMzNTUwNDI1NjgiLCJwIjoiaiJ9
+R2-43,"Comprobar el servicio de entrega Order and Go agregando  ""productsWeight"": 3.2","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 14, ""productsWeight"": 3.2 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 14,
+    ""productsWeight"": 3.2
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-44,"Comprobar el servicio de entrega Order and Go agregando  ""productsWeight"": 5","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 14, ""productsWeight"": 5 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 14,
+    ""productsWeight"": 5
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}","200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",APROBADO,
+R2-45,"Comprobar el servicio de entrega Order and Go agregando  ""productsCount"": 16 y ""productsWeight"": 6","1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos: ""deliveryTime"": 21, ""productsCount"": 16, ""productsWeight"": 7 en el cuerpo de la solicitud","{
+    ""deliveryTime"": 21,
+    ""productsCount"": 16,
+    ""productsWeight"": 7
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 9
+}","200 OK
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 5
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-45?atlOrigin=eyJpIjoiMDNlM2U4OGY5MGFjNGIxM2I1NWUyNTQ2OTk3ZmM2OTQiLCJwIjoiaiJ9
+R2-46,Comprobar el servicio de entrega Order and Go agregando  los valores de los parámetros como strings,"1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos como strings: ""deliveryTime"": ""21"", ""productsCount"": ""10"", ""productsWeight"": ""4"" en el cuerpo de la solicitud","{
+    ""deliveryTime"": ""21"",
+    ""productsCount"": ""10"",
+    ""productsWeight"": ""4""
+}",400 Bad Request,"200 OK 
+{
+    ""name"": ""Order and Go"",
+    ""isItPossibleToDeliver"": true,
+    ""hostDeliveryCost"": 5,
+    ""toBeDeliveredTime"": {
+        ""min"": 20,
+        ""max"": 25
+    },
+    ""clientDeliveryCost"": 0
+}",NO APROBADO,https://andrea-del-pilar19.atlassian.net/browse/R2-46?atlOrigin=eyJpIjoiZmI5ODA0MDc1MzJmNGIzMWE4ZTQ0MTE2M2Y2ODA3MDAiLCJwIjoiaiJ9
+R2-47,Comprobar el servicio de entrega Order and Go agregando  los valores de los parámetros como letras,"1. Envía una solicitud POST a order-and-go/v1/delivery y en el cuerpo de la solicitud se agregan los siguientes datos como strings: ""deliveryTime"": ocho, ""productsCount"": dos, ""productsWeight"": dos en el cuerpo de la solicitud","{
+    ""deliveryTime"": ocho,
+    ""productsCount"": dos,
+    ""productsWeight"": dos
+}",400 Bad Request,400 Bad Request,APROBADO,
